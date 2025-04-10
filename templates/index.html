@@ -10,6 +10,63 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        /* Add this to your existing style section */
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://images.pexels.com/photos/219998/pexels-photo-219998.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.1;
+    z-index: -2;
+    pointer-events: none; /* Ensures clicks pass through to elements below */
+}
+
+/* Keep your existing background-animation but adjust z-index */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+    z-index: -1;
+    opacity: 0.2;
+}
+
+/* Adjust theme-specific brightness */
+[data-theme="dark"] body::after {
+    filter: brightness(0.6) contrast(1.2);
+}
+
+[data-theme="light"] body::after {
+    filter: brightness(1.1) contrast(0.9);
+}
+
+[data-theme="cyberpunk"] body::after {
+    filter: hue-rotate(180deg) saturate(2);
+}
+
+[data-theme="retro-spy"] body::after {
+    filter: sepia(0.5) contrast(1.2);
+}
+
+/* Ensure content containers have proper background */
+.grid-card, #encode-decode, .footer, .testimonial, .important-note, .modal-content {
+    background-color: var(--card-bg) !important;
+    background-blend-mode: overlay;
+}
         [data-theme="dark"] {
             --bg-color: #1a202c;
             --text-color: #e2e8f0;
